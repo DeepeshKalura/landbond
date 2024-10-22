@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:landbond/core/app_url.dart';
 
+import '../../core/pallet.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -21,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-        seconds: 3,
+        seconds: 4,
       ),
     );
 
@@ -40,24 +42,19 @@ class _SplashScreenState extends State<SplashScreen>
 
   void _nextScreen() {
     context.pushReplacementNamed(
-      AppUrl.signInScreen,
+      AppUrl.welcomeScreen,
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Pallet.backgroundColor,
       body: Center(
         child: FadeTransition(
           opacity: animation,
-          child: const Text(
-            "Land Bond",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
+          child: Image.asset(
+            "assets/images/splashLogo.png",
           ),
         ),
       ),

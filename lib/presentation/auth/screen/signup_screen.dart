@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../core/app_url.dart';
 import '../../../core/pallet.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
@@ -20,6 +24,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
     _emailController.dispose();
     _passwordController.dispose();
+    _nameController.dispose();
+    _confirmPasswordController.dispose();
   }
 
   @override
@@ -47,7 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 children: [
                   const SizedBox(height: 20),
                   Text(
-                    "Welcome\nBack",
+                    "Welcome\nUser",
                     style: GoogleFonts.montserrat(
                       color: Colors.white,
                       fontSize: 28,
@@ -66,12 +72,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 padding: const EdgeInsets.only(left: 40, top: 20),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width - 80,
-                  height: 310,
+                  height: 350,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Sign In",
+                        "Sign Up",
                         style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w700,
                           fontSize: 28,
@@ -81,6 +87,25 @@ class _SignInScreenState extends State<SignInScreen> {
                       Form(
                         child: Column(
                           children: [
+                            const SizedBox(height: 20),
+                            SizedBox(
+                              width: double.infinity,
+                              child: TextFormField(
+                                controller: _nameController,
+                                style: GoogleFonts.montserrat(
+                                  color: Pallet.whiteColor,
+                                ),
+                                decoration: InputDecoration(
+                                  labelText: "Username",
+                                  hintStyle: GoogleFonts.montserrat(
+                                    color: Pallet.whiteColor,
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                              ),
+                            ),
                             const SizedBox(height: 20),
                             SizedBox(
                               width: double.infinity,
@@ -119,19 +144,36 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                               ),
                             ),
-
-                            // Forgot Password
+                            const SizedBox(height: 20),
+                            SizedBox(
+                              width: double.infinity,
+                              child: TextFormField(
+                                controller: _confirmPasswordController,
+                                style: GoogleFonts.montserrat(
+                                  color: Pallet.whiteColor,
+                                ),
+                                decoration: InputDecoration(
+                                  labelText: "Confirm Password",
+                                  hintStyle: GoogleFonts.montserrat(
+                                    color: Pallet.whiteColor,
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      Text(
-                        "Forgot Password?",
-                        style: GoogleFonts.montserrat(
-                          color: Pallet.boaderColor,
-                          fontSize: 15,
-                        ),
-                      )
+                      // const SizedBox(height: 12),
+                      // Text(
+                      //   "Forgot Password?",
+                      //   style: GoogleFonts.montserrat(
+                      //     color: Pallet.boaderColor,
+                      //     fontSize: 15,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -156,6 +198,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: ElevatedButton(
                           onPressed: () {
                             // call to actions
+
+                            context.pushNamed(AppUrl.optVerficationScreen);
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(

@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routerConfig: AppRoutes.router,
         theme: ThemeData(
           primarySwatch: Colors.blue,
