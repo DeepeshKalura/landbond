@@ -15,7 +15,6 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _nameController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
   @override
@@ -24,7 +23,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     _emailController.dispose();
     _passwordController.dispose();
-    _nameController.dispose();
     _confirmPasswordController.dispose();
   }
 
@@ -87,25 +85,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Form(
                         child: Column(
                           children: [
-                            const SizedBox(height: 20),
-                            SizedBox(
-                              width: double.infinity,
-                              child: TextFormField(
-                                controller: _nameController,
-                                style: GoogleFonts.montserrat(
-                                  color: Pallet.whiteColor,
-                                ),
-                                decoration: InputDecoration(
-                                  labelText: "Username",
-                                  hintStyle: GoogleFonts.montserrat(
-                                    color: Pallet.whiteColor,
-                                  ),
-                                  enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                  ),
-                                ),
-                              ),
-                            ),
                             const SizedBox(height: 20),
                             SizedBox(
                               width: double.infinity,

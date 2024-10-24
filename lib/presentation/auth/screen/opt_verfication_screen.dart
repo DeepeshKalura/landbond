@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../core/app_url.dart';
 import '../../../core/pallet.dart';
 
 class OptVerficationScreen extends StatefulWidget {
@@ -88,6 +90,89 @@ class _OptVerficationScreenState extends State<OptVerficationScreen> {
 
                 // TextFormField for the 4th digit
                 _buildOTPField(_controller4, _focusNode4, null),
+              ],
+            ),
+            const SizedBox(
+              height: 80,
+            ),
+
+            //  TODO: For time being, Just completed the UI not been created same button as given in the figma desing
+            Column(
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: Pallet.buttonGradient,
+                        borderRadius: BorderRadius.circular(
+                          30.0,
+                        ),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // call to actions
+
+                          context.pushNamed(
+                            AppUrl.profileRegiserationScreen,
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 40,
+                            vertical: 20,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          fixedSize: Size(
+                            MediaQuery.of(context).size.width,
+                            70,
+                          ),
+                          iconColor: Pallet.whiteColor,
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Verify",
+                              style: GoogleFonts.montserrat(
+                                color: Pallet.whiteColor,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: Image.asset(
+                        "assets/images/centreButtonImage.png",
+                        width: 80,
+                      ),
+                    ),
+                    Positioned(
+                      right: 10,
+                      top: 0,
+                      child: Image.asset(
+                        "assets/images/leftButtonCiricle.png",
+                        width: 80,
+                      ),
+                    ),
+                    const Positioned(
+                      right: 38,
+                      top: 23,
+                      child: Icon(
+                        Icons.arrow_right_alt_sharp,
+                        color: Pallet.whiteColor,
+                        size: 30,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ],

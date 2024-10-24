@@ -16,4 +16,10 @@ class Pallet {
     ],
     stops: [0.0, 1.0],
   );
+
+  static const transparent = Colors.transparent;
+
+  static const buttonRoleColor = Color(0xFF233169);
+
+  static const black12 = Colors.black12;
 }

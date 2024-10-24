@@ -5,4 +5,6 @@ class AppUrl {
   static const String welcomeScreen = "welcomeScreen";
   static const String signUpScreen = "signUpScreen";
   static const String optVerficationScreen = "optVerficationScreen";
+  static const String profileRegiserationScreen = "profileRegiserationScreen";
+  static const String profileTypeScreen = 'profileTypeScreen';
 }

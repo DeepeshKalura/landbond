@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../presentation/auth/screen/opt_verfication_screen.dart';
-import '../presentation/auth/screen/signup_screen.dart';
-import '../presentation/auth/screen/welcome_screen.dart';
 import '/core/app_url.dart';
 // screens
 import '../presentation/auth/screen/signin_screen.dart';
+import '../presentation/auth/screen/opt_verfication_screen.dart';
+import '../presentation/auth/screen/profile_regiseration_screen.dart';
+import '../presentation/auth/screen/profile_type_screen.dart';
+import '../presentation/auth/screen/signup_screen.dart';
+import '../presentation/auth/screen/welcome_screen.dart';
+import '../presentation/home/screen/home_screen.dart';
 import '../presentation/splash/splash_screen.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -41,6 +44,21 @@ class AppRoutes {
         name: AppUrl.optVerficationScreen,
         builder: (context, state) => const OptVerficationScreen(),
       ),
+      GoRoute(
+        path: "/profileRegiseration",
+        name: AppUrl.profileRegiserationScreen,
+        builder: (context, state) => const ProfileRegistrationScreen(),
+      ),
+      GoRoute(
+        path: "/profileType",
+        name: AppUrl.profileTypeScreen,
+        builder: (context, state) => const ProfileTypeScreen(),
+      ),
+      GoRoute(
+        path: '/home',
+        name: AppUrl.homeScreen,
+        builder: (context, state) => const HomeScreen(),
+      )
     ],
   );
 }
