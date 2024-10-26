@@ -4,11 +4,11 @@ import 'package:go_router/go_router.dart';
 import '/core/app_url.dart';
 // screens
 import '../presentation/auth/screen/signin_screen.dart';
-import '../presentation/auth/screen/opt_verfication_screen.dart';
-import '../presentation/auth/screen/profile_regiseration_screen.dart';
-import '../presentation/auth/screen/profile_type_screen.dart';
-import '../presentation/auth/screen/signup_screen.dart';
-import '../presentation/auth/screen/welcome_screen.dart';
+import '../presentation/auth/oldscreen/opt_verfication_screen.dart';
+import '../presentation/auth/oldscreen/profile_regiseration_screen.dart';
+import '../presentation/auth/oldscreen/profile_type_screen.dart';
+import '../presentation/auth/oldscreen/signup_screen.dart';
+import '../presentation/auth/oldscreen/welcome_screen.dart';
 import '../presentation/home/screen/home_screen.dart';
 import '../presentation/splash/splash_screen.dart';
 

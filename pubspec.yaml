@@ -41,6 +41,8 @@ dependencies:
   google_fonts: ^6.2.1
   image_picker: ^1.1.2
   firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +69,11 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/icons/splash/
+    - assets/images/auth/
+    - assets/icons/auth/
+    - assets/images/splash/
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

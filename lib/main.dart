@@ -8,11 +8,11 @@ import 'core/bloc_observator.dart';
 import 'presentation/auth/bloc/auth_bloc.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = BlocObservationLogger();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

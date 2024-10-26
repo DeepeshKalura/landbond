@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Pallet {
-  static const Color backgroundColor = Color(0xFF020101);
+  static const Color splashBackgroundColor = Color(0x8021628A);
+  static const Color backgroundColor = Colors.black;
 
   static const Color boaderColor = Color(0xFF2743FB);
 
