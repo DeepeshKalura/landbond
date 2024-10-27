@@ -43,6 +43,11 @@ dependencies:
   firebase_core: ^3.6.0
   firebase_auth: ^5.3.1
   google_sign_in: ^6.2.1
+  shared_preferences: ^2.3.2
+  flutter_gen: ^5.8.0
+  url_launcher: ^6.3.1
+  get_it: ^8.0.1
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +78,7 @@ flutter:
     - assets/images/auth/
     - assets/icons/auth/
     - assets/images/splash/
+    - assets/images/onboarding/
 
   #   - images/a_dot_ham.jpeg
 
