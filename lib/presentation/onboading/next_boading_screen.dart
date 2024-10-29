@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,18 +11,18 @@ import '../../core/app_url.dart';
 import '../../core/pallet.dart';
 import 'bloc/onboading_bloc.dart';
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class NextboardingScreen extends StatefulWidget {
+  const NextboardingScreen({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  State<NextboardingScreen> createState() => _NextboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _NextboardingScreenState extends State<NextboardingScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<OnboardingBloc>().add(StartOnboardingEvent());
+    context.read<OnboardingBloc>().add(StartNextOnboardingEvent());
   }
 
   @override
@@ -33,7 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         } else if (state is NextOnboadingState) {
           context.pushNamed(AppUrl.nextBoardingScreen);
         } else if (state is HomeScreenState) {
-          context.pushReplacement(AppUrl.homeScreen);
+          context.pushReplacementNamed(AppUrl.homeScreen);
         }
       },
       child: Scaffold(
@@ -92,7 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     width: (MediaQuery.of(context).size.width / 2) + 70,
                     child: RichText(
                       text: TextSpan(
-                        text: "Find best place to stay in ",
+                        text: "Fast sell your property in just",
                         style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500,
                           fontSize: 29,
@@ -101,7 +102,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         children: [
                           TextSpan(
-                            text: "good price",
+                            text: "one click",
                             style: GoogleFonts.lato(
                               fontWeight: FontWeight.bold,
                               fontSize: 29,
@@ -117,7 +118,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   SizedBox(
                     width: (MediaQuery.of(context).size.width / 2) + 70,
                     child: Text(
-                      "We are best so, you can add your property and get best price for that.",
+                      "We cover your back, we have one of the best properties in the India",
                       style: GoogleFonts.lato(
                         fontWeight: FontWeight.w400,
                         fontSize: 16,
@@ -147,7 +148,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           borderRadius: BorderRadius.circular(10),
                           image: const DecorationImage(
                             image: AssetImage(
-                                'assets/images/onboarding/small_hotel.png'),
+                              'assets/images/onboarding/hotel.png',
+                            ),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -195,7 +197,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                         child: Text(
-                          "Let’s Start",
+                          "Next",
                           style: GoogleFonts.lato(
                             fontWeight: FontWeight.w700,
                             fontSize: 17,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../presentation/onboading/next_boading_screen.dart';
 import '/core/app_url.dart';
 // screens
 import '../presentation/auth/screen/signin_screen.dart';
@@ -34,7 +35,12 @@ class AppRoutes {
         path: '/onboarding',
         name: AppUrl.onboardingScreen,
         builder: (context, state) => const OnboardingScreen(),
-      )
+      ),
+      GoRoute(
+        path: '/nextboarding',
+        name: AppUrl.nextBoardingScreen,
+        builder: (context, state) => const NextboardingScreen(),
+      ),
     ],
   );
 }

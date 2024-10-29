@@ -41,6 +41,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Pallet.whiteColor,
       body: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is OnbodingScreenState) {

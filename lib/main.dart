@@ -8,6 +8,7 @@ import 'firebase_options.dart';
 import 'core/app_routes.dart';
 import 'core/bloc_observator.dart';
 import 'presentation/auth/bloc/auth_bloc.dart';
+import 'presentation/onboading/bloc/onboading_bloc.dart';
 import 'presentation/splash/bloc/splash_bloc.dart';
 import 'service/database/shared_preferences_service.dart';
 import 'service/firebase/authenticate_service.dart';
@@ -37,7 +38,10 @@ class MyApp extends StatelessWidget {
             di.injector.get<SharedPreferencesService>(),
             di.injector.get<AuthenticateService>(),
           ),
-        )
+        ),
+        BlocProvider(
+          create: (context) => OnboardingBloc(),
+        ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
