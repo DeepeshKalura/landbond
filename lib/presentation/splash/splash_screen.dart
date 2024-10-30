@@ -83,11 +83,12 @@ class _SplashScreenState extends State<SplashScreen>
                     Color.fromRGBO(255, 109, 23, 0.64),
                     Color(0xFF1E1E1E),
                   ],
-                  stops: [0.0, 0.29, 1],
+                  stops: [0.0, 0.29, 0.69],
                   transform: GradientRotation(3.14159),
                 ),
               ),
             ),
+
             // Fade-in Animation for Logo and Text
             Center(
               child: FadeTransition(
@@ -113,18 +114,29 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
             Positioned(
-              bottom: 20,
+              bottom: 40,
               left: 0,
               right: 0,
-              child: Center(
-                child: Text(
-                  "Made with ❤️ by Deepesh Kalura",
-                  style: GoogleFonts.lato(
-                    color: Pallet.whiteColor,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
+              child: Column(
+                children: [
+                  Text(
+                    "Made with Love",
+                    style: GoogleFonts.quicksand(
+                      color: Pallet.whiteColor,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 4),
+                  Text(
+                    "v1.0",
+                    style: GoogleFonts.quicksand(
+                      color: Pallet.whiteColor,
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
               ),
             ),
           ],
