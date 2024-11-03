@@ -7,6 +7,7 @@ import "package:landbond/locator/injector.dart" as di;
 import 'firebase_options.dart';
 import 'core/app_routes.dart';
 import 'core/bloc_observator.dart';
+import 'helper.dart';
 import 'presentation/auth/bloc/auth_bloc.dart';
 import 'presentation/onboading/bloc/onboading_bloc.dart';
 import 'presentation/splash/bloc/splash_bloc.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await uploadCitiesData();
   runApp(const MyApp());
 }
 
