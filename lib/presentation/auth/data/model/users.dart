@@ -2,33 +2,36 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'users.g.dart';
 
+enum UserRole { consumer, admin, producer }
+
 @JsonSerializable()
 class Users {
-  final int userId;
+  final String userId;
   final String name;
   final String email;
-  final String password;
-  final int roleId;
-  final String phoneNumber;
+  final UserRole role;
   final String profilePhotoUrl;
+  String? timezone;
+  String? phoneNumber;
   String? location;
   String? address;
-  String? createdAt;
-  String? updatedAt;
+  late DateTime createdAt;
+  late DateTime updatedAt;
 
   Users({
     required this.userId,
     required this.name,
     required this.email,
-    required this.password,
-    required this.roleId,
-    required this.phoneNumber,
+    required this.role,
     required this.profilePhotoUrl,
     this.location,
+    this.phoneNumber,
     this.address,
-    this.createdAt,
-    this.updatedAt,
-  });
+    this.timezone,
+  }) {
+    createdAt = DateTime.now().toUtc();
+    updatedAt = DateTime.now().toUtc();
+  }
 
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
 
