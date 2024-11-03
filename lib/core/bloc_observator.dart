@@ -1,7 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:landbond/core/singelethon.dart';
+
+import "package:landbond/locator/injector.dart" as di;
+import 'package:logger/logger.dart';
 
 class BlocObservationLogger extends BlocObserver {
+  final logger = di.injector.get<Logger>();
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);

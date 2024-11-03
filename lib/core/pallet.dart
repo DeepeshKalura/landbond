@@ -23,8 +23,12 @@ class Pallet {
   static const buttonRoleColor = Color(0xFF233169);
 
   static const black12 = Colors.black12;
+  static const black = Colors.black;
 
   static const primaryColor = Color(0xFFFF6D17);
 
   static const greyColor = Color.fromRGBO(214, 214, 214, 1);
+  static const greyColor2 = Color(0xFFA2A7AF);
+
+  static const red = Colors.red;
 }
