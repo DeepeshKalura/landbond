@@ -32,7 +32,7 @@ class _NextboardingScreenState extends State<NextboardingScreen> {
         if (state is OnboardingCompletedState) {
           context.pushReplacementNamed(AppUrl.signInScreen);
         } else if (state is NextOnboadingState) {
-          context.pushNamed(AppUrl.nextBoardingScreen);
+          context.pushReplacementNamed(AppUrl.signInScreen);
         } else if (state is HomeScreenState) {
           context.pushReplacementNamed(AppUrl.homeScreen);
         }
@@ -41,6 +41,7 @@ class _NextboardingScreenState extends State<NextboardingScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: false,
+          leading: null,
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Padding(
@@ -156,13 +157,11 @@ class _NextboardingScreenState extends State<NextboardingScreen> {
                       ),
                     ),
                     BlocBuilder<OnboardingBloc, OnboardingState>(
-                      buildWhen: (prev, state) =>
-                          prev.runtimeType != state.runtimeType,
                       builder: (context, state) {
                         double progressValue = .0;
                         if (state is OnboardingInProgress) {
                           progressValue = state.progress;
-                          log("Value addded to check is stage changeing $progressValue");
+                          log("Value addded to check is stage changeinged $progressValue");
                         }
                         return Positioned(
                           bottom: 120,

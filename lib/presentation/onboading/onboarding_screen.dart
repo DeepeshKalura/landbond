@@ -31,9 +31,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         if (state is OnboardingCompletedState) {
           context.pushReplacementNamed(AppUrl.signInScreen);
         } else if (state is NextOnboadingState) {
-          context.pushNamed(AppUrl.nextBoardingScreen);
+          context.pushReplacementNamed(AppUrl.nextBoardingScreen);
         } else if (state is HomeScreenState) {
-          context.pushReplacement(AppUrl.homeScreen);
+          context.pushReplacementNamed(AppUrl.homeScreen);
         }
       },
       child: Scaffold(
@@ -154,13 +154,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                     ),
                     BlocBuilder<OnboardingBloc, OnboardingState>(
-                      buildWhen: (prev, state) =>
-                          prev.runtimeType != state.runtimeType,
                       builder: (context, state) {
-                        double progressValue = .0;
+                        double progressValue = 0;
                         if (state is OnboardingInProgress) {
                           progressValue = state.progress;
-                          log("Value addded to check is stage changeing $progressValue");
+                          log("Value addded to yara $progressValue");
                         }
                         return Positioned(
                           bottom: 120,
