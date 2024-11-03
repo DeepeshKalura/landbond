@@ -12,14 +12,15 @@ import 'presentation/onboading/bloc/onboading_bloc.dart';
 import 'presentation/splash/bloc/splash_bloc.dart';
 import 'service/database/shared_preferences_service.dart';
 import 'service/firebase/authenticate_service.dart';
+import 'service/timer/timer_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   Bloc.observer = BlocObservationLogger();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  di.init();
   runApp(const MyApp());
 }
 
@@ -40,7 +41,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (context) => OnboardingBloc(),
+          create: (context) => OnboardingBloc(
+            di.injector.get<TimerService>(),
+          ),
         ),
       ],
       child: MaterialApp.router(
