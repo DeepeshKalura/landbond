@@ -12,6 +12,7 @@ Producer _$ProducerFromJson(Map<String, dynamic> json) => Producer(
       type: $enumDecode(_$ProducerTypeEnumMap, json['type']),
       phoneNumber: json['phoneNumber'] as String,
       email: json['email'] as String,
+      profilePhotoUrl: json['profilePhotoUrl'] as String,
       timezone: json['timezone'] as String,
       isVerified: json['isVerified'] as bool? ?? false,
       verificationDocuments: (json['verificationDocuments'] as List<dynamic>)
@@ -29,6 +30,7 @@ Map<String, dynamic> _$ProducerToJson(Producer instance) => <String, dynamic>{
       'name': instance.name,
       'type': _$ProducerTypeEnumMap[instance.type]!,
       'phoneNumber': instance.phoneNumber,
+      'profilePhotoUrl': instance.profilePhotoUrl,
       'email': instance.email,
       'timezone': instance.timezone,
       'isVerified': instance.isVerified,

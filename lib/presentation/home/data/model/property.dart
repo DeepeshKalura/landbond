@@ -1,9 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'cities.dart';
-import 'locality.dart';
-import 'producer.dart';
-import 'property_review.dart';
+
 import 'types.dart';
 
 import 'cordinates.dart';
@@ -25,13 +23,15 @@ class Property {
   final String? rentPeriodicity;
   final double size;
   final String sizeUnit;
-  final int age;
-  final Producer producer;
+  final int year;
+  final String producerId;
   final Cities city;
-  final Locality locality;
+  final String localityId;
   final Coordinates coordinates;
   final List<NearbyPlace> nearbyPlaces;
-  final PropertyReview review;
+  final String? reviewId;
+  final double rating;
+  final String address;
   final List<String> facilities;
   final List<String> features;
   final String description;
@@ -56,17 +56,18 @@ class Property {
     this.rentPeriodicity,
     required this.size,
     required this.sizeUnit,
-    required this.review,
-    required this.age,
-    required this.producer,
+    this.reviewId,
+    required this.year,
+    required this.producerId,
     required this.city,
-    required this.locality,
+    required this.localityId,
     required this.coordinates,
     required this.nearbyPlaces,
     required this.facilities,
     required this.features,
     required this.description,
     this.websiteUrl,
+    required this.address,
     required this.images,
     this.popularityScore = 0.0,
     this.verificationStatus = 'PENDING',
@@ -74,6 +75,7 @@ class Property {
     required this.createdAt,
     required this.updatedAt,
     this.verifiedAt,
+    required this.rating,
   });
 
   factory Property.fromJson(Map<String, dynamic> json) =>

@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../presentation/auth/screen/confirm_email_screen.dart';
 import '../presentation/auth/screen/email_verified_screen.dart';
 import '../presentation/auth/screen/new_password_screen.dart';
+import '../presentation/home/screen/notification_screen.dart';
+import '../presentation/home/screen/property_screen.dart';
 import '/core/app_url.dart';
 // screens
 import '../presentation/auth/screen/checking_email_forgot_password_screen.dart';
@@ -82,6 +84,18 @@ class AppRoutes {
         path: '/confirmEmailScreen',
         name: AppUrl.confirmEmailScreen,
         builder: (context, state) => const ConfirmEmailScreen(),
+      ),
+      GoRoute(
+        path: '/notificationScreen',
+        name: AppUrl.notificationScreen,
+        builder: (context, state) => const NotificationScreen(),
+      ),
+      GoRoute(
+        path: '/propertyScreen',
+        name: AppUrl.propertyScreen,
+        builder: (context, state) => const PropertyScreen(
+          search: "solve",
+        ),
       ),
     ],
   );

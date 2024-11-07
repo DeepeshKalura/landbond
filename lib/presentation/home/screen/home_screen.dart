@@ -30,6 +30,18 @@ class _HomeScreenState extends State<HomeScreen> {
         if (state is NotificationButtonPressedState) {
           context.pushNamed(AppUrl.notificationScreen);
         }
+
+        if (state is SearchSuccessState) {
+          var queryParameters = {
+            'search': state.search,
+            'searchProperty': state.searchProperty,
+          };
+
+          context.pushNamed(
+            AppUrl.propertyScreen,
+            queryParameters: queryParameters,
+          );
+        }
       },
       child: Scaffold(
         key: _scaffoldKey,

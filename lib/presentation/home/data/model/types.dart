@@ -13,7 +13,7 @@ enum PropertyType {
 
 enum PropertyStatus { underConstruction, readyToMove, completed }
 
-enum DealType { rent, sale }
+enum DealType { rent, sale, plot }
 
 enum ProducerType { dealer, agent, owner }
 

@@ -7,8 +7,8 @@ import "package:landbond/locator/injector.dart" as di;
 import 'firebase_options.dart';
 import 'core/app_routes.dart';
 import 'core/bloc_observator.dart';
-import 'helper.dart';
 import 'presentation/auth/bloc/auth_bloc.dart';
+import 'presentation/home/bloc/home_bloc.dart';
 import 'presentation/onboading/bloc/onboading_bloc.dart';
 import 'presentation/splash/bloc/splash_bloc.dart';
 import 'service/database/shared_preferences_service.dart';
@@ -22,7 +22,6 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await uploadCitiesData();
   runApp(const MyApp());
 }
 
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SplashBloc(
             di.injector.get<SharedPreferencesService>(),
-            di.injector.get<AuthenticateService>(),
+            di.injector.get<FirebaseService>(),
           ),
         ),
         BlocProvider(
@@ -47,10 +46,14 @@ class MyApp extends StatelessWidget {
             di.injector.get<TimerService>(),
           ),
         ),
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: AppRoutes.router,
+        // home: const StaggingScreen(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

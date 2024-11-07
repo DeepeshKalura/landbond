@@ -14,4 +14,8 @@ class AppUrl {
   static const String emailVerifiedScreen = 'emailVerifiedScreen';
   static const String confirmEmailScreen = 'confirmEmailScreen';
   static const String newPasswordScreen = 'newPasswordScreen';
+
+  static const String notificationScreen = 'notificationScreen';
+
+  static const String propertyScreen = 'propertyScreen';
 }
