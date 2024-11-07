@@ -81,6 +81,8 @@ flutter:
     - assets/images/splash/
     - assets/images/onboarding/
     - assets/icons/onboarding/
+    - assets/icons/home/
+    - assets/images/home/
 
   #   - images/a_dot_ham.jpeg
 
