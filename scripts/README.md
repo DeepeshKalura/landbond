@@ -32,3 +32,9 @@ You will need to create the json file.
 ## Usage & Warning
 
 This is a script that automate the process of uploading data to firebase but most of them not working as expected. I manually change it to work with the current dummy data. So make sure to check the data and it should be work with the current data.
+
+**Note:** 
+```bash
+python --version
+Python 3.10.12
+```
