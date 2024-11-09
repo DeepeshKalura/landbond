@@ -1,40 +1,40 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'types.dart';
 
-part 'producer.g.dart';
+import '../../../home/data/model/types.dart';
+
+part 'actors.g.dart';
 
 @JsonSerializable()
-class Producer {
+class Actors {
   final String id;
-  final String name;
-  final ProducerType type;
-  final String phoneNumber;
-  final String profilePhotoUrl;
   final String email;
+  final String name;
+  final String phoneNumber;
+  final String isVerified;
+  final String profilePhotoUrl;
   final String timezone;
-  final bool isVerified;
+  final ProducerType type;
   final List<String> verificationDocuments;
   final DateTime createdAt;
   final DateTime updatedAt;
   final DateTime? verifiedAt;
 
-  Producer({
+  Actors({
     required this.id,
-    required this.name,
-    required this.type,
-    required this.phoneNumber,
     required this.email,
+    required this.name,
+    required this.phoneNumber,
+    required this.isVerified,
     required this.profilePhotoUrl,
     required this.timezone,
-    this.isVerified = false,
+    required this.type,
     required this.verificationDocuments,
     required this.createdAt,
     required this.updatedAt,
     this.verifiedAt,
   });
 
-  factory Producer.fromJson(Map<String, dynamic> json) =>
-      _$ProducerFromJson(json);
+  factory Actors.fromJson(Map<String, dynamic> json) => _$ActorsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProducerToJson(this);
+  Map<String, dynamic> toJson() => _$ActorsToJson(this);
 }

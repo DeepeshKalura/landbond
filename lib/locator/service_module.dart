@@ -10,8 +10,8 @@ void setup(GetIt getIt) {
     () => SharedPreferencesService(),
   );
 
-  getIt.registerLazySingleton<AuthenticateService>(
-    () => AuthenticateService(),
+  getIt.registerLazySingleton<FirebaseService>(
+    () => FirebaseService(),
   );
 
   getIt.registerLazySingleton<ImagePickerService>(

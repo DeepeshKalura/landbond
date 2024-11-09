@@ -134,7 +134,7 @@ class UpdatePasswordState extends AuthState {}
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   XFile? image;
 
-  final _auth = di.injector<AuthenticateService>();
+  final _auth = di.injector<FirebaseService>();
 
   AuthBloc() : super(IntitalAuthState()) {
     on<SignupButtonPressedEvent>(_signupScreen);
@@ -254,7 +254,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(EmailAuthLoadingState());
 
     try {
-      final auth = AuthenticateService();
+      final auth = FirebaseService();
 
       await auth.signInWithEmail(event.email, event.password);
 

@@ -10,6 +10,7 @@ import 'core/bloc_observator.dart';
 import 'presentation/auth/bloc/auth_bloc.dart';
 import 'presentation/home/bloc/home_bloc.dart';
 import 'presentation/onboading/bloc/onboading_bloc.dart';
+import 'presentation/property/bloc/propterty_bloc.dart';
 import 'presentation/splash/bloc/splash_bloc.dart';
 import 'service/database/shared_preferences_service.dart';
 import 'service/firebase/authenticate_service.dart';
@@ -48,6 +49,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => HomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PropertyBloc(),
         ),
       ],
       child: MaterialApp.router(

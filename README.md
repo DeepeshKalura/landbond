@@ -1,6 +1,16 @@
 # landbond
 
-It is a londbond project create with the flutter framework with bloc state management. 
+It is a londbond project create with the flutter framework with bloc state management and clean architecture.
+
+### Idea 
+
+![Project Image](/image/clean-architecture-diagram.png)
+
+The project has simple idea that we will create a infrastructure manage with `service` folder and `repository` folder. The `service` folder will contain all the api call and the `repository` folder will contain all the business logic. The `bloc` folder will contain all the state management logic.
+
+If my code is not follow these make it like this and make the code like this. 
+
+Or follow any other Bloc and clean architecture pattern for flutter.
 
 
 ## Getting Started 
@@ -16,15 +26,7 @@ flutter run
 ```
 
 you are good to go.
+ 
 
-
-## Important Note:
-
-This is a uuid create for the project, for those who are using google sign or apple sign in but does not have the profile image. It has been created in firebase storage but not be referenced in firestore becuase it is not a user. It is just a folder to store anomous user profile user. 
-
-
-`a8e2ceb8-3baa-4ce0-ae36-2e1cd4d39716`
-
-**Note:** This is not a user, but if you wanted to build a random profile photo feature then this will be super helpful. 
 
 

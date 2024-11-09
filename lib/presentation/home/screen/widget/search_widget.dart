@@ -33,10 +33,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       dealType = DealType.rent;
     } else if (isPlot) {
       dealType = DealType.plot;
-    } else if (isBuy) {
-      dealType = DealType.sale;
     }
-
     if (value.isNotEmpty) {
       context.read<HomeBloc>().add(
             SearchEvent(
@@ -45,6 +42,12 @@ class _SearchWidgetState extends State<SearchWidget> {
             ),
           );
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeBloc>().add(BuyEvent());
   }
 
   @override
@@ -109,9 +112,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                     const SizedBox(height: 15),
                     BlocBuilder<HomeBloc, HomeState>(
                       builder: (context, state) {
-                        isBuy = state is BuyState || state is InitialState;
-                        isRent = state is RentState;
-                        isPlot = state is PlotState;
+                        isBuy = context.read<HomeBloc>().isBuy;
+                        isRent = context.read<HomeBloc>().isRent;
+                        isPlot = context.read<HomeBloc>().isPlot;
                         return Row(
                           children: [
                             buildTypeButton(
@@ -178,7 +181,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                           controller: searchEditingController,
                                           decoration: InputDecoration(
                                             hintText:
-                                                'Select locality for ${isBuy ? "buy" : isRent ? "rent" : "plot"}',
+                                                'Select locality for ${isPlot ? "plot" : isRent ? "rent" : "buy"}',
                                             hintStyle: GoogleFonts.quicksand(
                                               color: Pallet.greyColor3,
                                               fontSize: 18,

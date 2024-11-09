@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'cities.dart';
-
 import 'types.dart';
 
 import 'cordinates.dart';
@@ -25,7 +23,7 @@ class Property {
   final String sizeUnit;
   final int year;
   final String producerId;
-  final Cities city;
+  final String cityId;
   final String localityId;
   final Coordinates coordinates;
   final List<NearbyPlace> nearbyPlaces;
@@ -38,7 +36,7 @@ class Property {
   final String? websiteUrl;
   final List<PropertyImage> images;
   final double popularityScore;
-  final String verificationStatus;
+  final VerificationStatus verificationStatus;
   final bool isActive;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -59,7 +57,7 @@ class Property {
     this.reviewId,
     required this.year,
     required this.producerId,
-    required this.city,
+    required this.cityId,
     required this.localityId,
     required this.coordinates,
     required this.nearbyPlaces,
@@ -70,7 +68,7 @@ class Property {
     required this.address,
     required this.images,
     this.popularityScore = 0.0,
-    this.verificationStatus = 'PENDING',
+    this.verificationStatus = VerificationStatus.pending,
     this.isActive = true,
     required this.createdAt,
     required this.updatedAt,

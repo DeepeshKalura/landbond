@@ -30,7 +30,7 @@ final class ErrorState extends SplashState {
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   final SharedPreferencesService _sharedPreferencesService;
-  final AuthenticateService _authenticateService;
+  final FirebaseService _authenticateService;
   SplashBloc(this._sharedPreferencesService, this._authenticateService)
       : super(SplashScreenActiveState()) {
     on<SplashEvent>(_onEvent);
@@ -43,6 +43,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       final isNewUser = await _sharedPreferencesService.isNewUser();
 
       if (isNewUser) {
+        await _sharedPreferencesService.setNewUser(false);
         emit(OnbodingScreenState());
       } else {
         final isAuthenticate = await _authenticateService.isAuthenticate();

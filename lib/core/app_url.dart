@@ -18,4 +18,10 @@ class AppUrl {
   static const String notificationScreen = 'notificationScreen';
 
   static const String propertyScreen = 'propertyScreen';
+
+  static const String listPropertiesScreen = 'listPropertiesScreen';
+
+  static const String propertyDetailsScreen = 'propertyDetailsScreen';
+
+  static const String chatingWithAgentScreen = 'chatingWithAgentScreen';
 }

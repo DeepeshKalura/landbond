@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../core/app_url.dart';
 import '../../../core/pallet.dart';
@@ -24,6 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    context.read<HomeBloc>().add(
+          LoadPopularPropertiesEvent(),
+        );
+
+    context.read<HomeBloc>().add(
+          LoadLocalityEvent(),
+        );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<HomeBloc, HomeState>(
       listener: (context, state) {
@@ -32,16 +45,44 @@ class _HomeScreenState extends State<HomeScreen> {
         }
 
         if (state is SearchSuccessState) {
-          var queryParameters = {
-            'search': state.search,
-            'searchProperty': state.searchProperty,
-          };
-
           context.pushNamed(
             AppUrl.propertyScreen,
-            queryParameters: queryParameters,
           );
         }
+
+        if (state is LoadPopularErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.errorMessage,
+              ),
+            ),
+          );
+        }
+
+        if (state is LoadLocalityErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.errorMessage,
+              ),
+            ),
+          );
+        }
+
+        if (state is ShowMorePropertiesState) {
+          context.pushNamed(AppUrl.listPropertiesScreen);
+        }
+
+        if (state is PropertySelectedState) {
+          context.pushNamed(AppUrl.propertyDetailsScreen, extra: {
+            'property': state.property,
+          });
+        }
+
+        // if(state is ShowMoreLocalitiesState){
+        //   context.pushNamed(AppUrl.localityListScreen);
+        // }
       },
       child: Scaffold(
         key: _scaffoldKey,
@@ -112,7 +153,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 2,
               ),
               Container(
-                height: 300,
                 padding: const EdgeInsets.only(left: 12.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -130,20 +170,98 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         ShowMoreWidget(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.read<HomeBloc>().add(
+                                  ShowMorePropertiesEvent(),
+                                );
+                          },
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
-                    // const PeopertyCard(
-                    //   name: "3 BHK Builder Floor",
-                    //   address: "Kalkaji, New Delhi",
-                    //   status: PropertyStatus.readyToMove,
-                    //   imageUrl:
-                    //       "https://images.unsplash.com/photo-1488034976201-ffbaa99cbf5c",
-                    //   rating: 4.5,
-                    //   price: 25000,
-                    // ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    BlocBuilder<HomeBloc, HomeState>(
+                      builder: (context, state) {
+                        if (state is LoadPopularLoadingState) {
+                          return Row(
+                            children: [
+                              Shimmer(
+                                gradient: Pallet.shimmerGradient,
+                                loop: 14,
+                                child: Container(
+                                  height: 210,
+                                  width: 200,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    color: Pallet.greyColor2,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Shimmer(
+                                loop: 14,
+                                gradient: Pallet.shimmerGradient,
+                                child: Container(
+                                  height: 210,
+                                  width: 200,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Pallet.greyColor2,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          if (context.read<HomeBloc>().popularProperty ==
+                              null) {
+                            return const SizedBox(
+                              height: 210,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  color: Pallet.primaryColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return SizedBox(
+                              height: 320,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: context
+                                    .read<HomeBloc>()
+                                    .popularProperty!
+                                    .length,
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      context.read<HomeBloc>().add(
+                                            PropertySelectedEvent(
+                                              property: context
+                                                  .read<HomeBloc>()
+                                                  .popularProperty![index],
+                                            ),
+                                          );
+                                    },
+                                    child: PeopertyCardWidget(
+                                      property: context
+                                          .read<HomeBloc>()
+                                          .popularProperty![index],
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          }
+                        }
+                      },
+                    ),
                     const SizedBox(
                       height: 30,
                     ),
@@ -178,23 +296,78 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       const SizedBox(width: 20),
-                      SizedBox(
-                        height: 290,
-                        child: ListView(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          children: const [
-                            // LocalityCardWidget(),
-                            // SizedBox(width: 12),
-                            // LocalityCardWidget(),
-                            // SizedBox(width: 12),
-                            // LocalityCardWidget(),
-                            // SizedBox(width: 12),
-                            // LocalityCardWidget(),
-                          ],
-                        ),
+                      BlocBuilder<HomeBloc, HomeState>(
+                        builder: (context, state) {
+                          if (state is LoadLocalityLoadingState) {
+                            return Row(
+                              children: [
+                                Shimmer(
+                                  gradient: Pallet.shimmerGradient,
+                                  loop: 14,
+                                  child: Container(
+                                    height: 300,
+                                    width: 200,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Pallet.whiteColor,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Shimmer(
+                                  loop: 14,
+                                  gradient: Pallet.shimmerGradient,
+                                  child: Container(
+                                    height: 300,
+                                    width: 200,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Pallet.whiteColor,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          } else {
+                            if (context.read<HomeBloc>().locality == null ||
+                                context.read<HomeBloc>().cities == null) {
+                              return const SizedBox(
+                                height: 300,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    color: Pallet.primaryColor,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return SizedBox(
+                                height: 300,
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount:
+                                      context.read<HomeBloc>().locality!.length,
+                                  itemBuilder: (context, index) {
+                                    return LocalityCardWidget(
+                                      locality: context
+                                          .read<HomeBloc>()
+                                          .locality![index],
+                                      city: context
+                                          .read<HomeBloc>()
+                                          .cities![index],
+                                    );
+                                  },
+                                ),
+                              );
+                            }
+                          }
+                        },
                       ),
-                      const SizedBox(height: 30),
+                      const SizedBox(
+                        height: 30,
+                      ),
                     ],
                   ),
                 ),

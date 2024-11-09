@@ -18,11 +18,11 @@ Property _$PropertyFromJson(Map<String, dynamic> json) => Property(
       rentPeriodicity: json['rentPeriodicity'] as String?,
       size: (json['size'] as num).toDouble(),
       sizeUnit: json['sizeUnit'] as String,
-      review: PropertyReview.fromJson(json['review'] as Map<String, dynamic>),
-      age: (json['age'] as num).toInt(),
-      producer: Producer.fromJson(json['producer'] as Map<String, dynamic>),
-      city: Cities.fromJson(json['city'] as Map<String, dynamic>),
-      locality: Locality.fromJson(json['locality'] as Map<String, dynamic>),
+      reviewId: json['reviewId'] as String?,
+      year: (json['year'] as num).toInt(),
+      producerId: json['producerId'] as String,
+      cityId: json['cityId'] as String,
+      localityId: json['localityId'] as String,
       coordinates:
           Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
       nearbyPlaces: (json['nearbyPlaces'] as List<dynamic>)
@@ -35,17 +35,21 @@ Property _$PropertyFromJson(Map<String, dynamic> json) => Property(
           (json['features'] as List<dynamic>).map((e) => e as String).toList(),
       description: json['description'] as String,
       websiteUrl: json['websiteUrl'] as String?,
+      address: json['address'] as String,
       images: (json['images'] as List<dynamic>)
           .map((e) => PropertyImage.fromJson(e as Map<String, dynamic>))
           .toList(),
       popularityScore: (json['popularityScore'] as num?)?.toDouble() ?? 0.0,
-      verificationStatus: json['verificationStatus'] as String? ?? 'PENDING',
+      verificationStatus: $enumDecodeNullable(
+              _$VerificationStatusEnumMap, json['verificationStatus']) ??
+          VerificationStatus.pending,
       isActive: json['isActive'] as bool? ?? true,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       verifiedAt: json['verifiedAt'] == null
           ? null
           : DateTime.parse(json['verifiedAt'] as String),
+      rating: (json['rating'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$PropertyToJson(Property instance) => <String, dynamic>{
@@ -60,20 +64,23 @@ Map<String, dynamic> _$PropertyToJson(Property instance) => <String, dynamic>{
       'rentPeriodicity': instance.rentPeriodicity,
       'size': instance.size,
       'sizeUnit': instance.sizeUnit,
-      'age': instance.age,
-      'producer': instance.producer,
-      'city': instance.city,
-      'locality': instance.locality,
+      'year': instance.year,
+      'producerId': instance.producerId,
+      'cityId': instance.cityId,
+      'localityId': instance.localityId,
       'coordinates': instance.coordinates,
       'nearbyPlaces': instance.nearbyPlaces,
-      'review': instance.review,
+      'reviewId': instance.reviewId,
+      'rating': instance.rating,
+      'address': instance.address,
       'facilities': instance.facilities,
       'features': instance.features,
       'description': instance.description,
       'websiteUrl': instance.websiteUrl,
       'images': instance.images,
       'popularityScore': instance.popularityScore,
-      'verificationStatus': instance.verificationStatus,
+      'verificationStatus':
+          _$VerificationStatusEnumMap[instance.verificationStatus]!,
       'isActive': instance.isActive,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
@@ -100,4 +107,11 @@ const _$PropertyStatusEnumMap = {
 const _$DealTypeEnumMap = {
   DealType.rent: 'rent',
   DealType.sale: 'sale',
+  DealType.plot: 'plot',
+};
+
+const _$VerificationStatusEnumMap = {
+  VerificationStatus.pending: 'pending',
+  VerificationStatus.verified: 'verified',
+  VerificationStatus.rejected: 'rejected',
 };

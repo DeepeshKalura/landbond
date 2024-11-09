@@ -10,14 +10,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../presentation/auth/data/model/users.dart' as model;
 
-class AuthenticateService {
-  final _auth = FirebaseAuth.instance;
-  final _database = FirebaseFirestore.instance;
-  final _storage = FirebaseStorage.instance.ref("users/profilePhoto");
+class FirebaseService {
+  final auth = FirebaseAuth.instance;
+  final database = FirebaseFirestore.instance;
+  final storage = FirebaseStorage.instance.ref("users/profilePhoto");
 
   Future<void> signInWithEmail(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (e) {
       rethrow;
     }
@@ -43,9 +43,9 @@ class AuthenticateService {
 
       final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
-      _auth.signInWithCredential(credential);
+      auth.signInWithCredential(credential);
 
-      if (_auth.isSignInWithEmailLink(googleUser!.email)) {
+      if (auth.isSignInWithEmailLink(googleUser!.email)) {
         return;
       }
 
@@ -58,7 +58,7 @@ class AuthenticateService {
         profilePhotoUrl: googleUser.photoUrl ??
             "https://firebasestorage.googleapis.com/v0/b/realestate-a695d.appspot.com/o/users%2Fa8e2ceb8-3baa-4ce0-ae36-2e1cd4d39716%2FnoprofileImage.jpg?alt=media&token=d172b91f-fed9-48df-b92e-19ceea53c352",
       );
-      _database.collection("users").doc(id).set(user.toJson());
+      database.collection("users").doc(id).set(user.toJson());
     } catch (e) {
       rethrow;
     }
@@ -67,7 +67,7 @@ class AuthenticateService {
   Future<String> getProfilePhotoUrl(
       String userId, File file, String filename) async {
     try {
-      final profileDownloadUrl = await _storage
+      final profileDownloadUrl = await storage
           .child("$userId/$filename")
           .putFile(file)
           .then((value) => value.ref.getDownloadURL());
@@ -79,7 +79,7 @@ class AuthenticateService {
 
   Future<void> deleteProfilePhoto(String userId) async {
     try {
-      await _storage.child(userId).delete();
+      await storage.child(userId).delete();
     } catch (e) {
       rethrow;
     }
@@ -89,7 +89,7 @@ class AuthenticateService {
   Future<void> createUserWithEmail(
       String email, String password, String name, File profilePhoto) async {
     try {
-      final userCredential = await _auth.createUserWithEmailAndPassword(
+      final userCredential = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -111,24 +111,24 @@ class AuthenticateService {
         profilePhotoUrl: profilePhotoUrl,
       );
 
-      await _database.runTransaction((transaction) async {
+      await database.runTransaction((transaction) async {
         final userDocRef =
-            _database.collection("users").doc(users.userId.toString());
+            database.collection("users").doc(users.userId.toString());
         transaction.set(userDocRef, users.toJson());
       });
     } catch (e) {
       try {
         final userDocRef =
-            _database.collection("users").doc(_auth.currentUser?.uid);
+            database.collection("users").doc(auth.currentUser?.uid);
         await userDocRef.delete();
       } catch (_) {}
 
       try {
-        await deleteProfilePhoto(_auth.currentUser!.uid);
+        await deleteProfilePhoto(auth.currentUser!.uid);
       } catch (_) {}
 
       try {
-        await _auth.currentUser?.delete();
+        await auth.currentUser?.delete();
       } catch (_) {}
 
       rethrow;
@@ -148,7 +148,7 @@ class AuthenticateService {
   Future<void> forgotPassword(String code, String newPassword) async {
     try {
       final password =
-          _auth.confirmPasswordReset(code: code, newPassword: newPassword);
+          auth.confirmPasswordReset(code: code, newPassword: newPassword);
 
       /*
 
@@ -160,14 +160,25 @@ class AuthenticateService {
   }
 
   Future<void> signOut() async {
-    await _auth.signOut();
+    await auth.signOut();
   }
 
   Future<bool> isAuthenticate() async {
-    final user = _auth.userChanges();
+    final user = auth.userChanges();
     final isUser = await user.isEmpty;
 
     log('isUser: $isUser');
     return !isUser;
+  }
+
+  Future<model.Users?> getUser() async {
+    final user = auth.currentUser;
+    log(user.toString());
+    if (user == null) return null;
+
+    final userDoc = await database.collection("users").doc(user.uid).get();
+    if (!userDoc.exists) return null;
+
+    return model.Users.fromJson(userDoc.data()!);
   }
 }

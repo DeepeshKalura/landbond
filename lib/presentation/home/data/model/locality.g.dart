@@ -19,6 +19,8 @@ Locality _$LocalityFromJson(Map<String, dynamic> json) => Locality(
       isActive: json['isActive'] as bool? ?? true,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
+      rating: (json['rating'] as num).toDouble(),
+      propertyId: json['propertyId'] as String,
     );
 
 Map<String, dynamic> _$LocalityToJson(Locality instance) => <String, dynamic>{
@@ -29,6 +31,8 @@ Map<String, dynamic> _$LocalityToJson(Locality instance) => <String, dynamic>{
       'popularityScore': instance.popularityScore,
       'nearbyLandmarks': instance.nearbyLandmarks,
       'isActive': instance.isActive,
+      'rating': instance.rating,
+      'propertyId': instance.propertyId,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
     };

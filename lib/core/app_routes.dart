@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:landbond/presentation/home/screen/list_properties_screen.dart';
 
 import '../presentation/auth/screen/confirm_email_screen.dart';
 import '../presentation/auth/screen/email_verified_screen.dart';
 import '../presentation/auth/screen/new_password_screen.dart';
+import '../presentation/home/data/model/property.dart';
 import '../presentation/home/screen/notification_screen.dart';
 import '../presentation/home/screen/property_screen.dart';
+import '../presentation/property/screen/chating_with_agent_screen.dart';
+import '../presentation/property/screen/property_details_screen.dart';
 import '/core/app_url.dart';
 // screens
 import '../presentation/auth/screen/checking_email_forgot_password_screen.dart';
@@ -93,10 +97,33 @@ class AppRoutes {
       GoRoute(
         path: '/propertyScreen',
         name: AppUrl.propertyScreen,
-        builder: (context, state) => const PropertyScreen(
-          search: "solve",
-        ),
+        builder: (context, state) => const PropertyScreen(),
       ),
+      GoRoute(
+        path: '/listPropertiesScreen',
+        name: AppUrl.listPropertiesScreen,
+        builder: (context, state) => const ListPropertiesScreen(),
+      ),
+      GoRoute(
+        path: '/propertyDetailsScreen',
+        name: AppUrl.propertyDetailsScreen,
+        builder: (context, state) {
+          Map<String, Property> args = state.extra as Map<String, Property>;
+          return PropertyDetailsScreen(
+            property: args['property']!,
+          );
+        },
+      ),
+      GoRoute(
+          path: '/chatingWithAgentScreen',
+          name: AppUrl.chatingWithAgentScreen,
+          builder: (context, state) {
+            Map<String, String> args = state.extra as Map<String, String>;
+
+            return ChatingWithAgentScreen(
+              producerId: args['producerId'] as String,
+            );
+          }),
     ],
   );
 }

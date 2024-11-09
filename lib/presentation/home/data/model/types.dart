@@ -29,6 +29,8 @@ enum PropertyInteractionType {
   priceView
 }
 
+enum VerificationStatus { pending, verified, rejected }
+
 // TODO: I will not going to implement
 // this feature in this project
 // It is the recommendation feature it don't with the recomendation of the property.
