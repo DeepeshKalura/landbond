@@ -7,7 +7,6 @@ import 'package:shimmer/shimmer.dart';
 import '../../../core/app_url.dart';
 import '../../../core/pallet.dart';
 import '../bloc/home_bloc.dart';
-import '../data/model/types.dart';
 import 'widget/feature_propteries_widget.dart';
 import 'widget/menu_widget.dart';
 import 'widget/search_widget.dart';

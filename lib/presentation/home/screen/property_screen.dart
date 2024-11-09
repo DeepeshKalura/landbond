@@ -4,8 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/pallet.dart';
 import '../bloc/home_bloc.dart';
-import '../data/model/property.dart';
-import 'proptery_list_screen.dart';
 import 'widget/list_property_card_widget.dart';
 
 class PropertyScreen extends StatelessWidget {
