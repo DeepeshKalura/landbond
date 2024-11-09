@@ -14,7 +14,8 @@ class ChatBubbleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: message.isAgent ? Alignment.centerRight : Alignment.centerLeft,
+      alignment:
+          !message.isAgent ? Alignment.centerRight : Alignment.centerLeft,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: ConstrainedBox(
