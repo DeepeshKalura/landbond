@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Andheri",
+        "cityId": "c24c43b5-8a06-4aa1-aba1-91de0fccc37a",
+        "coordinates": {
+            "latitude": 19.1197,
+            "longitude": 72.8464
+        },
+        "popularityScore": 8.5,
+        "nearbyLandmarks": ["Juhu Beach", "Versova Beach", "Infinity Mall"],
+        "isActive": true,
+        "createdAt": "2024-11-05T12:00:00Z",
+        "updatedAt": "2024-11-05T12:00:00Z"
+    },
+    {
+        "name": "Connaught Place",
+        "cityId": "d992f310-73a3-4f18-afec-57763481f533",
+        "coordinates": {
+            "latitude": 28.6315,
+            "longitude": 77.2167
+        },
+        "popularityScore": 9.0,
+        "nearbyLandmarks": ["India Gate", "Janpath", "Jantar Mantar"],
+        "isActive": true,
+        "createdAt": "2024-11-05T12:00:00Z",
+        "updatedAt": "2024-11-05T12:00:00Z"
+    },
+    {
+        "name": "Indiranagar",
+        "cityId": "38298243-c497-42b2-8068-9cfe8c17080c",
+        "coordinates": {
+            "latitude": 12.9716,
+            "longitude": 77.6411
+        },
+        "popularityScore": 9.2,
+        "nearbyLandmarks": ["Cubbon Park", "MG Road", "Ulsoor Lake"],
+        "isActive": true,
+        "createdAt": "2024-11-05T12:00:00Z",
+        "updatedAt": "2024-11-05T12:00:00Z"
+    },
+    {
+        "name": "Banjara Hills",
+        "cityId": "65e26461-35a8-4627-8c4e-b9415c3871f2",
+        "coordinates": {
+            "latitude": 17.4135,
+            "longitude": 78.4483
+        },
+        "popularityScore": 8.8,
+        "nearbyLandmarks": ["Hussain Sagar", "Golkonda Fort", "Birla Mandir"],
+        "isActive": true,
+        "createdAt": "2024-11-05T12:00:00Z",
+        "updatedAt": "2024-11-05T12:00:00Z"
+    },
+    {
+        "name": "Salt Lake",
+        "cityId": "7b1d3be0-0bbb-4de8-afa6-b127822cabe2",
+        "coordinates": {
+            "latitude": 22.5867,
+            "longitude": 88.4175
+        },
+        "popularityScore": 8.7,
+        "nearbyLandmarks": ["Eco Park", "Nicco Park", "Salt Lake Stadium"],
+        "isActive": true,
+        "createdAt": "2024-11-05T12:00:00Z",
+        "updatedAt": "2024-11-05T12:00:00Z"
+    }
+]

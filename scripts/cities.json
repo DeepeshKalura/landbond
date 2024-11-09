@@ -1,0 +1,142 @@
+[
+    {
+        "name": "Mumbai",
+        "state": "Maharashtra",
+        "imageUrl": "city/mumbai.png",
+        "coordinates": {
+            "latitude": 18.97,
+            "longitude": 72.82
+        },
+        "isActive": true
+    },
+    {
+        "name": "New Delhi",
+        "state": "Delhi",
+        "imageUrl": "city/delhi.png",
+        "coordinates": {
+            "latitude": 28.61,
+            "longitude": 77.23
+        },
+        "isActive": true
+    },
+    {
+        "name": "Bangalore",
+        "state": "Karnataka",
+        "imageUrl": "city/bangalore.png",
+        "coordinates": {
+            "latitude": 12.978889,
+            "longitude": 77.591667
+        },
+        "isActive": true
+    },
+    {
+        "name": "Hyderabad",
+        "state": "Telangana",
+        "imageUrl": "city/hyderabad.png",
+        "coordinates": {
+            "latitude": 17.361667,
+            "longitude": 78.474722
+        },
+        "isActive": true
+    },
+    {
+        "name": "Ahmedabad",
+        "state": "Gujarat",
+        "imageUrl": "city/ahmedabad.png",
+        "coordinates": {
+            "latitude": 2323.0225,
+            "longitude": 72.571389
+        },
+        "isActive": true
+    },
+    {
+        "name": "Chennai",
+        "state": "Tamil Nadu",
+        "imageUrl": "city/chennai.png",
+        "coordinates": {
+            "latitude": 13.0825,
+            "longitude": 80.275
+        },
+        "isActive": true
+    },
+    {
+        "name": "Kolkata",
+        "state": "West Bengal",
+        "imageUrl": "city/kolkata.png",
+        "coordinates": {
+            "latitude": 22.56752,
+            "longitude": 88.369722
+        },
+        "isActive": true
+    },
+    {
+        "name": "Pune",
+        "state": "Maharashtra",
+        "imageUrl": "city/pune.png",
+        "coordinates": {
+            "latitude": 18.5204,
+            "longitude": 73.8567
+        },
+        "isActive": true
+    },
+    {
+        "name": "Jaipur",
+        "state": "Rajasthan",
+        "imageUrl": "city/jaipur.png",
+        "coordinates": {
+            "latitude": 26.9124,
+            "longitude": 75.7873
+        },
+        "isActive": true
+    },
+    {
+        "name": "Surat",
+        "state": "Gujarat",
+        "imageUrl": "city/surat.png",
+        "coordinates": {
+            "latitude": 21.1702,
+            "longitude": 72.8311
+        },
+        "isActive": true
+    },
+    {
+        "name": "Lucknow",
+        "state": "Uttar Pradesh",
+        "imageUrl": "city/lucknow.png",
+        "coordinates": {
+            "latitude": 26.8467,
+            "longitude": 80.9462
+        },
+        "isActive": true
+    },
+    {
+        "name": "Kanpur",
+        "state": "Uttar Pradesh",
+        "imageUrl": "city/kanpur.png",
+        "coordinates": {
+            "latitude": 26.4499,
+            "longitude": 80.3319
+        },
+        "isActive": true
+    },
+    {
+        "name": "Nagpur",
+        "state": "Maharashtra",
+        "imageUrl": "city/nagpur.png",
+        "coordinates": {
+            "latitude": 21.1458,
+            "longitude": 79.0882
+        },
+        "isActive": true
+    },
+    {
+        "name": "Indore",
+        "state": "Madhya Pradesh",
+        "imageUrl": "city/indore.png",
+        "coordinates": {
+            "latitude": 22.7196,
+            "longitude": 75.8577
+        },
+        "isActive": true
+    }
+]

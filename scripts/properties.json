@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Modern Villa in Banjara Hills",
+    "propertyType": "villa",
+    "status": "underConstruction",
+    "dealType": "sale",
+    "hasEMIOption": true,
+    "price": 30000000.00,
+    "currency": "INR",
+    "rentPeriodicity": null,
+    "size": 3500.00,
+    "sizeUnit": "sqft",
+    "year": 2023,
+    "producerId": "BHWXQ8GnsugwQ2F5O3z6sbjVwEm2",
+    "cityId": "65e26461-35a8-4627-8c4e-b9415c3871f2",
+    "localityId": "e69c06cb-ba4f-4861-9351-18feb05e83e2",
+    "coordinates": {
+      "latitude": 17.4144,
+      "longitude": 78.4395
+    },
+    "nearbyPlaces": [
+      { "distance": 1.0, "type": "shopping", "name": "GVK One Mall" },
+      { "distance": 2.5, "type": "school", "name": "Oakridge International School" },
+      { "distance": 3.0, "type": "hospital", "name": "Apollo Hospital" }
+    ],
+    "reviewId": null,
+    "rating": 4.5,
+    "address": "Banjara Hills, Hyderabad",
+    "facilities": ["Private Garden", "Swimming Pool", "Parking"],
+    "features": ["Scenic view", "Luxury Interiors", "24/7 Security"],
+    "description": "A modern villa with luxury interiors and a scenic view.",
+    "websiteUrl": "https://example-villa.com",
+    "images": [
+      { "url": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd", "caption": "Exterior view of the villa", "isPrimary": true },
+      { "url": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd", "caption": "Luxurious living area", "isPrimary": false }
+    ],
+    "popularityScore": 8.9,
+    "verificationStatus": "verified",
+    "isActive": true,
+    "createdAt": "2023-05-01T11:00:00Z",
+    "updatedAt": "2023-05-20T09:00:00Z",
+    "verifiedAt": "2023-05-25T12:00:00Z"
+  },
+  {
+    "name": "High-Rise Apartment in Salt Lake",
+    "propertyType": "apartment",
+    "status": "readyToMove",
+    "dealType": "rent",
+    "hasEMIOption": false,
+    "price": 45000.00,
+    "currency": "INR",
+    "rentPeriodicity": "monthly",
+    "size": 1500.00,
+    "sizeUnit": "sqft",
+    "year": 2020,
+    "producerId": "b3II1OGO9IgxSOcTl3WsZuUF7Np2",
+    "cityId": "7b1d3be0-0bbb-4de8-afa6-b127822cabe2",
+    "localityId": "4921009e-8447-416f-95ad-16aa89a6c98b",
+    "coordinates": {
+      "latitude": 22.5958,
+      "longitude": 88.4143
+    },
+    "nearbyPlaces": [
+      { "distance": 0.7, "type": "shopping", "name": "City Centre Salt Lake" },
+      { "distance": 1.3, "type": "school", "name": "Salt Lake School" },
+      { "distance": 2.1, "type": "hospital", "name": "Apollo Gleneagles Hospital" }
+    ],
+    "reviewId": null,
+    "rating": 0,
+    "address": "Salt Lake, Kolkata",
+    "facilities": ["Gym", "Play Area", "Parking"],
+    "features": ["City View", "High-speed Elevator", "24/7 Security"],
+    "description": "Spacious high-rise apartment with modern amenities and a great city view.",
+    "websiteUrl": "https://example-apartment.com",
+    "images": [
+      { "url": "https://images.unsplash.com/photo-1568605114967-8130f3a36994", "caption": "Front view of the high-rise", "isPrimary": true },
+      { "url": "https://images.unsplash.com/photo-1568605114967-8130f3a36994", "caption": "Balcony with city view", "isPrimary": false }
+    ],
+    "popularityScore": 8.5,
+    "verificationStatus": "verified",
+    "isActive": true,
+    "createdAt": "2022-10-12T10:30:00Z",
+    "updatedAt": "2023-02-14T08:00:00Z",
+    "verifiedAt": "2023-02-18T10:00:00Z"
+  },
+  {
+    "name": "Penthouse in Connaught Place",
+    "propertyType": "commercial",
+    "status": "readyToMove",
+    "dealType": "sale",
+    "hasEMIOption": true,
+    "price": 50000000.00,
+    "currency": "INR",
+    "rentPeriodicity": null,
+    "size": 2800.00,
+    "sizeUnit": "sqft",
+    "year": 2021,
+    "producerId": "bPuaQd0kEETyISbknGjEUIdfT6h1",
+    "cityId": "d992f310-73a3-4f18-afec-57763481f533",
+    "localityId": "36045c3e-86c2-4067-80f9-a848fc3437fa",
+    "coordinates": {
+      "latitude": 28.6315,
+      "longitude": 77.2167
+    },
+    "nearbyPlaces": [
+      { "distance": 0.5, "type": "shopping", "name": "PVR Plaza" },
+      { "distance": 1.0, "type": "restaurant", "name": "The Grill House" },
+      { "distance": 2.0, "type": "hospital", "name": "Fortis Hospital" }
+    ],
+    "reviewId": null,
+    "rating": 0,
+    "address": "Connaught Place, New Delhi",
+    "facilities": ["Private Terrace", "Jacuzzi", "Gym"],
+    "features": ["Skyline View", "Private Elevator", "24/7 Security"],
+    "description": "Luxurious penthouse with a private terrace, jacuzzi, and breathtaking views of the Delhi skyline.",
+    "websiteUrl": "https://example-penthouse.com",
+    "images": [
+      { "url": "https://images.unsplash.com/photo-1494475673543-6a6a27143fc8", "caption": "Penthouse terrace view", "isPrimary": true },
+      { "url": "https://images.unsplash.com/photo-1494475673543-6a6a27143fc8", "caption": "Living room with city view", "isPrimary": false }
+    ],
+    "popularityScore": 9.7,
+    "verificationStatus": "verified",
+    "isActive": true,
+    "createdAt": "2023-03-21T15:00:00Z",
+    "updatedAt": "2023-03-30T10:00:00Z",
+    "verifiedAt": "2023-04-01T09:30:00Z"
+  }
+]
