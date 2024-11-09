@@ -6,11 +6,7 @@ It is a londbond project create with the flutter framework with bloc state manag
 
 ![Project Image](/image/clean-architecture-diagram.png)
 
-The project has simple idea that we will create a infrastructure manage with `service` folder and `repository` folder. The `service` folder will contain all the api call and the `repository` folder will contain all the business logic. The `bloc` folder will contain all the state management logic.
-
-If my code is not follow these make it like this and make the code like this. 
-
-Or follow any other Bloc and clean architecture pattern for flutter.
+The idea was to follow these image as much as possible.  You can look any clean architecture blog with flutter. 
 
 
 ## Getting Started 
