@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "106808724897",
+    "project_id": "realestate-a695d",
+    "storage_bucket": "realestate-a695d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106808724897:android:822c2177423d864da20fe0",
+        "android_client_info": {
+          "package_name": "com.example.agent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJj6Bt27vVuR9gWWYWLahOxQm0uvc6nfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106808724897:android:cb9cc80a20c17901a20fe0",
+        "android_client_info": {
+          "package_name": "com.example.landbond"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJj6Bt27vVuR9gWWYWLahOxQm0uvc6nfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106808724897:android:f3c46f3aa4213542a20fe0",
+        "android_client_info": {
+          "package_name": "com.landbox.agent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJj6Bt27vVuR9gWWYWLahOxQm0uvc6nfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
