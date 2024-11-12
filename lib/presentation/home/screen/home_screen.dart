@@ -371,34 +371,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               )
-
-              // TopConsumerWidget(),
             ],
           ),
         ),
-        // bottomNavigationBar: BottomNavigationBar(
-        //   items: const <BottomNavigationBarItem>[
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.home),
-        //       label: 'Home',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.search),
-        //       label: 'Search',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.favorite),
-        //       label: 'Favourite',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.person),
-        //       label: 'Profile',
-        //     ),
-        //   ],
-        //   selectedItemColor: Colors.blue,
-        //   unselectedItemColor: Colors.grey,
-        //   showUnselectedLabels: true,
-        // ),
       ),
     );
   }
