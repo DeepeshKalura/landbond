@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../presentation/auth/login_screen.dart';
 import '../presentation/auth/screen/forgot_screen.dart';
+import '../presentation/auth/screen/notification_screen.dart';
 import '../presentation/auth/screen/signup_screen.dart';
+import '../presentation/home/screen/chat_screen.dart';
 import '../presentation/home/screen/home_screen.dart';
 import '../presentation/home/screen/property_entry_form_screen.dart';
 import '../presentation/home/screen/update_propterties_screen.dart';
@@ -65,6 +67,23 @@ class AppRoutes {
           return UpdatePropertiesScreen(
             property: para['proptery'],
           );
+        },
+      ),
+      GoRoute(
+        path: "/message",
+        name: AppUrl.chatListScreen,
+        builder: (context, state) {
+          final para = state.extra as Map<String, dynamic>;
+          return ChatListScreen(
+            currentUserId: para['currentUserId'],
+          );
+        },
+      ),
+      GoRoute(
+        path: "/notification",
+        name: AppUrl.notificationScreen,
+        builder: (context, state) {
+          return const NotificationScreen();
         },
       )
     ],

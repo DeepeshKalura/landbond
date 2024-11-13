@@ -38,7 +38,7 @@ class NotificationScreen extends StatelessWidget {
                           width: 80,
                           height: 80,
                           decoration: BoxDecoration(
-                            color: Colors.lightBlueAccent,
+                            color: Pallet.primaryColor,
                             borderRadius: BorderRadius.circular(40),
                           ),
                           child: const Icon(

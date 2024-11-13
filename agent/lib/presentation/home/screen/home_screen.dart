@@ -103,7 +103,12 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: const Icon(Icons.message),
             onPressed: () {
-              // Handle messaging
+              context.pushNamed(
+                AppUrl.chatListScreen,
+                extra: {
+                  'currentUserId': auth.currentUser!.uid,
+                },
+              );
             },
           ),
           IconButton(
@@ -130,8 +135,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-
-                // Business Stats Cards
                 _buildPropertyStatsCard(
                   title: 'Total Property Listing Limit',
                   value: totalListingLimit.toString(),
@@ -151,7 +154,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: 'Waiting For Approval',
                   value: metrics['pendingApproval'].toString(),
                 ),
-
                 const SizedBox(height: 24),
                 Text(
                   'Your Properties',
@@ -161,8 +163,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-
-                // Properties List
                 StreamBuilder<QuerySnapshot>(
                   stream: _propertiesStream,
                   builder: (context, snapshot) {
@@ -174,7 +174,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          color: Pallet.primaryColor,
+                        ),
                       );
                     }
 

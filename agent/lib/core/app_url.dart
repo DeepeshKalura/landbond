@@ -9,4 +9,5 @@ class AppUrl {
 
   static const String notificationScreen = "notificationScreen";
   static const String updateProptertiesScreen = "updateProptertiesScreen";
+  static const String chatListScreen = "chatListScreen";
 }
