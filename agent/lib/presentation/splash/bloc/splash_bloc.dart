@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,6 +31,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashScreenActiveState()) {
     on<TimerEndEvent>((event, emit) {
       if (FirebaseAuth.instance.currentUser == null) {
+        log("User is not logged in");
         emit(LoggedInState());
       } else {
         emit(HomeScreenState());

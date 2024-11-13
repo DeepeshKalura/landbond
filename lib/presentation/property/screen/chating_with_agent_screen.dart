@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:landbond/presentation/home/data/model/property.dart';
 
 import '../../../core/app_url.dart';
 import '../../../core/pallet.dart';
 import '../bloc/propterty_bloc.dart';
 import 'widget/chat_bubble_widget.dart';
 import 'widget/input_field_widget.dart';
+import 'widget/proptery_card.dart';
 
 class ChatingWithAgentScreen extends StatefulWidget {
-  const ChatingWithAgentScreen({super.key, required this.producerId});
+  const ChatingWithAgentScreen({
+    super.key,
+    required this.producerId,
+    required this.property,
+  });
   final String producerId;
+  final Property property;
 
   @override
   State<ChatingWithAgentScreen> createState() => _ChatingWithAgentScreenState();
@@ -58,6 +65,10 @@ class _ChatingWithAgentScreenState extends State<ChatingWithAgentScreen> {
         ),
         body: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: PropertyCard(property: widget.property),
+            ),
             Expanded(
               child: StreamBuilder(
                   stream: context
@@ -95,7 +106,9 @@ class _ChatingWithAgentScreenState extends State<ChatingWithAgentScreen> {
                     );
                   }),
             ),
-            const InputFieldWidget(),
+            InputFieldWidget(
+              propteryId: widget.property.id,
+            ),
           ],
         ),
       ),

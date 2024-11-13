@@ -5,7 +5,8 @@ import '../../../../core/pallet.dart';
 import '../../bloc/propterty_bloc.dart';
 
 class InputFieldWidget extends StatefulWidget {
-  const InputFieldWidget({super.key});
+  const InputFieldWidget({super.key, required this.propteryId});
+  final String propteryId;
 
   @override
   State<InputFieldWidget> createState() => _InputFieldWidgetState();
@@ -47,6 +48,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                 context.read<PropertyBloc>().add(
                       SendMessageEvent(
                         message: message,
+                        propteryId: widget.propteryId,
                       ),
                     );
                 _textController.clear();

@@ -34,11 +34,21 @@ class HomeRepoImpl {
 
   Future<List<Property>> getProperties() async {
     try {
-      return fs.database.collection('properties').get().then((value) {
+      return fs.database
+          .collection('properties')
+          .where(
+            'verificationStatus',
+            isEqualTo: "verified",
+          )
+          .get()
+          .then((value) {
         List<Property> properties = value.docs.map((doc) {
           return Property.fromJson(doc.data());
         }).toList();
 
+        for (var property in properties) {
+          log(property.name.toLowerCase());
+        }
         return properties;
       });
     } catch (e, s) {

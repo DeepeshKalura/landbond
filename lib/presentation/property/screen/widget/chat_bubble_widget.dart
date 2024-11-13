@@ -24,15 +24,15 @@ class ChatBubbleWidget extends StatelessWidget {
           ),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              color: Pallet.primaryColor,
+              color: message.isAgent ? Pallet.greyColor : Pallet.primaryColor,
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
                 message.text,
-                style: const TextStyle(
-                  color: Pallet.whiteColor,
+                style: TextStyle(
+                  color: message.isAgent ? Pallet.black : Pallet.whiteColor,
                   fontSize: 16.0,
                   fontWeight: FontWeight.w500,
                 ),

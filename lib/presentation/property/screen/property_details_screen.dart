@@ -20,7 +20,10 @@ class PropertyDetailsScreen extends StatelessWidget {
         if (state is ContactAgentSuccessState) {
           context.pushNamed(
             AppUrl.chatingWithAgentScreen,
-            extra: {'producerId': property.producerId},
+            extra: {
+              'producerId': property.producerId,
+              'property': state.proptery,
+            },
           );
         }
       },
@@ -170,7 +173,9 @@ class PropertyDetailsScreen extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         context.read<PropertyBloc>().add(
-                              ContactAgentEvent(),
+                              ContactAgentEvent(
+                                proptery: property,
+                              ),
                             );
                       },
                       style: ElevatedButton.styleFrom(

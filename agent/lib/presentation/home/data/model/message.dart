@@ -11,6 +11,7 @@ class Message {
   final String text;
   final DateTime timestamp;
   final bool isAgent;
+  final String propteryId;
 
   const Message({
     required this.senderId,
@@ -18,6 +19,7 @@ class Message {
     required this.text,
     required this.timestamp,
     required this.isAgent,
+    required this.propteryId,
   });
 
   factory Message.fromJson(Map<String, dynamic> json) =>

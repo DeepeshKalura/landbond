@@ -115,15 +115,16 @@ class AppRoutes {
         },
       ),
       GoRoute(
-          path: '/chatingWithAgentScreen',
-          name: AppUrl.chatingWithAgentScreen,
-          builder: (context, state) {
-            Map<String, String> args = state.extra as Map<String, String>;
-
-            return ChatingWithAgentScreen(
-              producerId: args['producerId'] as String,
-            );
-          }),
+        path: '/chatingWithAgentScreen',
+        name: AppUrl.chatingWithAgentScreen,
+        builder: (context, state) {
+          Map<String, dynamic> args = state.extra as Map<String, dynamic>;
+          return ChatingWithAgentScreen(
+            producerId: args['producerId'] as String,
+            property: args['property'] as Property,
+          );
+        },
+      ),
     ],
   );
 }

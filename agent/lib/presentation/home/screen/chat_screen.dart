@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/util/pallet.dart';
 import '../data/model/message.dart';
+import '../data/model/property.dart';
+import 'widget/proptery_card.dart';
 
 class ChatListScreen extends StatelessWidget {
   final String currentUserId;
@@ -212,16 +214,24 @@ class ChatListTile extends StatelessWidget {
   }
 }
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
   final String otherUserId;
   final String currentUserId;
-  final TextEditingController _messageController = TextEditingController();
 
-  ChatScreen({
+  const ChatScreen({
     super.key,
     required this.otherUserId,
     required this.currentUserId,
   });
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  final TextEditingController _messageController = TextEditingController();
+  String? _propertyId;
+  Property? _property;
 
   @override
   Widget build(BuildContext context) {
@@ -230,11 +240,17 @@ class ChatScreen extends StatelessWidget {
         title: FutureBuilder<DocumentSnapshot>(
           future: FirebaseFirestore.instance
               .collection('users')
-              .doc(otherUserId)
+              .doc(widget.otherUserId)
               .get(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return const Text('Loading...');
+              return Text(
+                'Loading...',
+                style: GoogleFonts.quicksand(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              );
             }
 
             Map<String, dynamic> userData =
@@ -245,12 +261,18 @@ class ChatScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
+          if (_property != null)
+            PropertyCard(
+              property: _property!,
+            ),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('messages')
-                  .where('senderId', whereIn: [currentUserId, otherUserId])
-                  .where('receiverId', whereIn: [currentUserId, otherUserId])
+                  .where('senderId',
+                      whereIn: [widget.currentUserId, widget.otherUserId])
+                  .where('receiverId',
+                      whereIn: [widget.currentUserId, widget.otherUserId])
                   .orderBy('timestamp', descending: true)
                   .snapshots(),
               builder: (context, snapshot) {
@@ -269,10 +291,34 @@ class ChatScreen extends StatelessWidget {
                     Message message = Message.fromJson(
                         snapshot.data!.docs[index].data()
                             as Map<String, dynamic>);
-                    return MessageBubble(
-                      message: message,
-                      isMe: message.senderId == currentUserId,
-                    );
+
+                    if (message.propteryId != _propertyId) {
+                      _propertyId = message.propteryId;
+
+                      FirebaseFirestore.instance
+                          .collection('properties')
+                          .doc(_propertyId)
+                          .get()
+                          .then((propertySnapshot) {
+                        if (propertySnapshot.exists && mounted) {
+                          setState(() {
+                            _property = Property.fromJson(
+                              propertySnapshot.data() as Map<String, dynamic>,
+                            );
+                          });
+                        }
+                      });
+
+                      return MessageBubble(
+                        message: message,
+                        isMe: message.isAgent,
+                      );
+                    } else {
+                      return MessageBubble(
+                        message: message,
+                        isMe: message.isAgent,
+                      );
+                    }
                   },
                 );
               },
@@ -291,11 +337,12 @@ class ChatScreen extends StatelessWidget {
     if (_messageController.text.trim().isEmpty) return;
 
     final message = Message(
-      senderId: currentUserId,
-      receiverId: otherUserId,
+      senderId: widget.otherUserId,
+      receiverId: widget.currentUserId,
       text: _messageController.text.trim(),
       timestamp: DateTime.now(),
-      isAgent: false,
+      isAgent: true,
+      propteryId: _propertyId!,
     );
     await FirebaseFirestore.instance
         .collection('messages')
@@ -305,7 +352,6 @@ class ChatScreen extends StatelessWidget {
   }
 }
 
-// message_bubble.dart
 class MessageBubble extends StatelessWidget {
   final Message message;
   final bool isMe;

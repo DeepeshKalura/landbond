@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import "package:landbond/locator/injector.dart" as di;
 
 import '../../../service/firebase/authenticate_service.dart';
+import '../../home/data/model/property.dart';
 import '../data/model/message.dart';
 import '../domain/repository/properties_repo_impl.dart';
 
@@ -17,9 +18,21 @@ sealed class PropertyState {}
 
 // contact Agent Event
 
-final class ContactAgentEvent extends PropertyEvent {}
+final class ContactAgentEvent extends PropertyEvent {
+  final Property proptery;
 
-final class ContactAgentSuccessState extends PropertyState {}
+  ContactAgentEvent({
+    required this.proptery,
+  });
+}
+
+final class ContactAgentSuccessState extends PropertyState {
+  final Property proptery;
+
+  ContactAgentSuccessState({
+    required this.proptery,
+  });
+}
 
 final class InitialPropteryState extends PropertyState {}
 
@@ -27,9 +40,11 @@ final class InitialPropteryState extends PropertyState {}
 
 final class SendMessageEvent extends PropertyEvent {
   final String message;
+  final String propteryId;
 
   SendMessageEvent({
     required this.message,
+    required this.propteryId,
   });
 }
 
@@ -100,7 +115,9 @@ class PropertyBloc extends Bloc<PropertyEvent, PropertyState> {
   }
 
   void _contectAgent(ContactAgentEvent event, Emitter<PropertyState> emit) {
-    emit(ContactAgentSuccessState());
+    emit(ContactAgentSuccessState(
+      proptery: event.proptery,
+    ));
   }
 
   void _sendMessage(SendMessageEvent event, Emitter<PropertyState> emit) async {
@@ -111,6 +128,7 @@ class PropertyBloc extends Bloc<PropertyEvent, PropertyState> {
         text: event.message,
         timestamp: DateTime.now(),
         isAgent: false,
+        propteryId: event.propteryId,
       );
       await propertiesRepoImpl.storeMessage(message);
       emit(ChatMessageSentState());

@@ -12,6 +12,7 @@ Message _$MessageFromJson(Map<String, dynamic> json) => Message(
       text: json['text'] as String,
       timestamp: DateTime.parse(json['timestamp'] as String),
       isAgent: json['isAgent'] as bool,
+      propteryId: json['propteryId'] as String,
     );
 
 Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
@@ -20,4 +21,5 @@ Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
       'text': instance.text,
       'timestamp': instance.timestamp.toIso8601String(),
       'isAgent': instance.isAgent,
+      'propteryId': instance.propteryId,
     };
