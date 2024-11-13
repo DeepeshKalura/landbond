@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../core/util/pallet.dart';
+
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
 
@@ -49,7 +51,7 @@ class NotificationScreen extends StatelessWidget {
                           width: 25,
                           height: 25,
                           decoration: const BoxDecoration(
-                            color: Colors.blue,
+                            color: Pallet.primaryColor,
                             shape: BoxShape.circle,
                           ),
                           child: const Center(
@@ -79,7 +81,7 @@ class NotificationScreen extends StatelessWidget {
                       'Once you get any notification please check here',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.blueGrey,
+                        color: Pallet.primaryColor,
                       ),
                     ),
                     const SizedBox(height: 32),
@@ -88,7 +90,7 @@ class NotificationScreen extends StatelessWidget {
                         context.pop();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Pallet.primaryColor,
                         minimumSize: const Size(200, 60),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),

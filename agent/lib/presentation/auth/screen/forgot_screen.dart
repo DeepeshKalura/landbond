@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../core/util/pallet.dart';
+
 class ForgotScreen extends StatefulWidget {
   const ForgotScreen({super.key, required this.auth});
 
@@ -38,7 +40,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(
-                      color: Colors.blue,
+                      color: Pallet.primaryColor,
                     ),
                   ),
                   hintText: 'Email Address',
@@ -51,7 +53,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
               const SizedBox(height: 16.0),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Pallet.primaryColor,
                   foregroundColor: Colors.white,
                   minimumSize: const Size.fromHeight(62),
                   shape: RoundedRectangleBorder(

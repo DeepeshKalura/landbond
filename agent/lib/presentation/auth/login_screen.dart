@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/app_url.dart';
+import '../../core/util/pallet.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -89,7 +90,7 @@ class LoginScreenState extends State<LoginScreen> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(
-                      color: Colors.blue, // Your primary color
+                      color: Pallet.primaryColor, // Your primary color
                     ),
                   ),
                   hintText: 'Email Address',
@@ -110,7 +111,7 @@ class LoginScreenState extends State<LoginScreen> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(
-                      color: Colors.blue, // Your primary color
+                      color: Pallet.primaryColor,
                     ),
                   ),
                   hintText: 'Password (8+ Characters)',
@@ -138,7 +139,7 @@ class LoginScreenState extends State<LoginScreen> {
                       height: 62,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.blue,
+                        color: Pallet.primaryColor,
                       ),
                       child: const Center(
                         child: SizedBox(
@@ -152,7 +153,7 @@ class LoginScreenState extends State<LoginScreen> {
                     )
                   : ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Pallet.primaryColor,
                         foregroundColor: Colors.white,
                         minimumSize: const Size.fromHeight(62),
                         shape: RoundedRectangleBorder(
@@ -180,7 +181,7 @@ class LoginScreenState extends State<LoginScreen> {
                     child: const Text(
                       'Forgot Password?',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Pallet.primaryColor,
                       ),
                     ),
                   ),
@@ -203,7 +204,7 @@ class LoginScreenState extends State<LoginScreen> {
                     child: const Text(
                       'Sign Up',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Pallet.primaryColor,
                       ),
                     ),
                   ),

@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 
 import '../../../core/app_url.dart';
+import '../../../core/util/pallet.dart';
 import '../../../core/util/validator.dart';
 import '../data/model/producer.dart' as model;
 
@@ -210,7 +211,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(
-                      color: Colors.blue,
+                      color: Pallet.primaryColor,
                     ),
                   ),
                   hintText: 'Name',
@@ -233,7 +234,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(
-                      color: Colors.blue,
+                      color: Pallet.primaryColor,
                     ),
                   ),
                   hintText: 'Email Address',
@@ -255,7 +256,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(
-                      color: Colors.blue,
+                      color: Pallet.primaryColor,
                     ),
                   ),
                   hintText: 'Password (8+ Characters)',
@@ -296,7 +297,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(
-                      color: Colors.blue,
+                      color: Pallet.primaryColor,
                     ),
                   ),
                   hintText: 'Confirm Password (8+ Characters)',
@@ -361,7 +362,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                         borderRadius: BorderRadius.circular(
                           20,
                         ),
-                        color: Colors.blue,
+                        color: Pallet.primaryColor,
                       ),
                       child: const Center(
                         child: SizedBox(
@@ -375,7 +376,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                     )
                   : ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Pallet.primaryColor,
                         foregroundColor: Colors.white,
                         minimumSize: const Size.fromHeight(62),
                         shape: RoundedRectangleBorder(
@@ -450,7 +451,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                     child: const Text(
                       'Login',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Pallet.primaryColor,
                       ),
                     ),
                   ),

@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../core/util/pallet.dart';
 import '../data/model/property.dart';
 import '../data/model/proptery_image.dart';
 import '../data/model/types.dart';
@@ -356,7 +357,7 @@ class _PropertyEntryFormScreenState extends State<PropertyEntryFormScreen> {
                               child: ElevatedButton(
                                 onPressed: _submitForm,
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue,
+                                  backgroundColor: Pallet.primaryColor,
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 16),
                                   shape: RoundedRectangleBorder(
@@ -386,7 +387,9 @@ class _PropertyEntryFormScreenState extends State<PropertyEntryFormScreen> {
             Container(
               color: Colors.black54,
               child: const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Pallet.primaryColor,
+                ),
               ),
             ),
         ],
@@ -484,7 +487,7 @@ class _PropertyEntryFormScreenState extends State<PropertyEntryFormScreen> {
           runSpacing: 0,
           children: items.map((item) {
             return CheckboxListTile(
-              activeColor: Colors.blue,
+              activeColor: Pallet.primaryColor,
               title: Text(
                 item,
                 style: GoogleFonts.quicksand(),
@@ -525,7 +528,7 @@ class _PropertyEntryFormScreenState extends State<PropertyEntryFormScreen> {
           uploadedImages.add(
             PropertyImage(
               url: imageUrl,
-              isPrimary: i == 0, // First image is primary
+              isPrimary: i == 0,
               caption: null,
             ),
           );

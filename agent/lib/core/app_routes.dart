@@ -7,6 +7,7 @@ import '../presentation/auth/screen/forgot_screen.dart';
 import '../presentation/auth/screen/signup_screen.dart';
 import '../presentation/home/screen/home_screen.dart';
 import '../presentation/home/screen/property_entry_form_screen.dart';
+import '../presentation/home/screen/update_propterties_screen.dart';
 import '../presentation/splash/screen/splash_screen.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -56,6 +57,16 @@ class AppRoutes {
           );
         },
       ),
+      GoRoute(
+        path: "/update",
+        name: AppUrl.updateProptertiesScreen,
+        builder: (context, state) {
+          final para = state.extra as Map<String, dynamic>;
+          return UpdatePropertiesScreen(
+            property: para['proptery'],
+          );
+        },
+      )
     ],
   );
 }

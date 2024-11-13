@@ -8,4 +8,5 @@ class AppUrl {
   static const String forgotScreen = "forgotScreen";
 
   static const String notificationScreen = "notificationScreen";
+  static const String updateProptertiesScreen = "updateProptertiesScreen";
 }

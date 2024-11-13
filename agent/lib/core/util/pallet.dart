@@ -27,7 +27,7 @@ class Pallet {
   static const black12 = Colors.black12;
   static const black = Colors.black;
 
-  static const primaryColor = Color(0xFFFF6D17);
+  static const primaryColor = Color(0xFFA60067);
 
   static const greyColor = Color.fromRGBO(214, 214, 214, 1);
   static const greyColor2 = Color(0xFFA2A7AF);
