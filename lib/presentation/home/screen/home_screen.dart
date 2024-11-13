@@ -160,12 +160,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Popluar Properties in India",
-                          style: GoogleFonts.quicksand(
-                            fontSize: 19,
-                            fontWeight: FontWeight.bold,
-                            color: Pallet.black,
+                        SizedBox(
+                          width: MediaQuery.sizeOf(context).width * 0.65,
+                          child: Text(
+                            "Popluar Properties in India",
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.quicksand(
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                              color: Pallet.black,
+                            ),
                           ),
                         ),
                         ShowMoreWidget(
@@ -280,15 +284,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(
-                            "Localities to buy properties",
-                            style: GoogleFonts.quicksand(
-                              fontSize: 19,
-                              fontWeight: FontWeight.bold,
-                              color: Pallet.black,
+                          SizedBox(
+                            width: MediaQuery.sizeOf(context).width * 0.65,
+                            child: Text(
+                              "Localities to buy properties",
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.quicksand(
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold,
+                                color: Pallet.black,
+                              ),
                             ),
                           ),
-                          const SizedBox(width: 10),
                           ShowMoreWidget(
                             onPressed: () {},
                           )

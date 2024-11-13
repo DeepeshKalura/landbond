@@ -16,14 +16,18 @@ class ShowMoreWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            "Show More",
-            style: GoogleFonts.quicksand(
-              fontSize: 16,
-              color: Pallet.primaryColor,
-              fontWeight: FontWeight.bold,
+          SizedBox(
+            width: MediaQuery.sizeOf(context).width * 0.15,
+            child: Text(
+              "Show More",
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.quicksand(
+                fontSize: 16,
+                color: Pallet.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.end,
             ),
-            textAlign: TextAlign.end,
           ),
           const SizedBox(
             width: 5,

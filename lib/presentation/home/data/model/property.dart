@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'types.dart';
 
-import 'cordinates.dart';
 import 'nearby_place.dart';
 import 'property_image.dart';
 
@@ -25,7 +24,6 @@ class Property {
   final String producerId;
   final String cityId;
   final String localityId;
-  final Coordinates coordinates;
   final List<NearbyPlace> nearbyPlaces;
   final String? reviewId;
   final double rating;
@@ -59,7 +57,6 @@ class Property {
     required this.producerId,
     required this.cityId,
     required this.localityId,
-    required this.coordinates,
     required this.nearbyPlaces,
     required this.facilities,
     required this.features,

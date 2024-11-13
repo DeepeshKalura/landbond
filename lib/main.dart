@@ -57,7 +57,6 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: AppRoutes.router,
-        // home: const StaggingScreen(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
