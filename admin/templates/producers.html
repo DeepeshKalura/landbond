@@ -1,0 +1,130 @@
+
+<!-- templates/producers.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Producers Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold">Producers</h1>
+            <a href="/" class="text-blue-500 hover:text-blue-600">Back to Home</a>
+        </div>
+
+
+        <!-- Producers List -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Producer List</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-6 py-3 text-left">Name</th>
+                            <th class="px-6 py-3 text-left">Type</th>
+                            <th class="px-6 py-3 text-left">Email</th>
+                            <th class="px-6 py-3 text-left">Verified</th>
+                            <th class="px-6 py-3 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producer in producers %}
+                        <tr class="border-t">
+                            <td class="px-6 py-4">{{ producer.name }}</td>
+                            <td class="px-6 py-4">{{ producer.type }}</td>
+                            <td class="px-6 py-4">{{ producer.email }}</td>
+                            <td class="px-6 py-4">
+                                {% if producer.isVerified %}
+                                <span class="text-green-500">✓ Verified</span>
+                                {% else %}
+                                <span class="text-red-500">Pending</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4">
+                                <button onclick="editProducer('{{ producer.id }}')" 
+                        class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 mr-2">
+                    Edit
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+<!-- Edit Producer Modal -->
+<div id="editProducerModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
+    <div class="relative p-8 bg-white max-w-md mx-auto mt-20 rounded-lg">
+        <h2 class="text-xl font-semibold mb-4">Edit Producer</h2>
+        <form id="editProducerForm" class="space-y-4">
+            <input type="hidden" id="producerId">
+            <div class="space-y-2">
+                <input type="text" id="editName" name="name" placeholder="Name" class="w-full border p-2 rounded">
+                <input type="text" id="editType" name="type" placeholder="Type" class="w-full border p-2 rounded">
+                <input type="tel" id="editPhone" name="phoneNumber" placeholder="Phone" class="w-full border p-2 rounded">
+                <input type="email" id="editEmail" name="email" placeholder="Email" class="w-full border p-2 rounded">
+                <input type="text" id="editTimezone" name="timezone" placeholder="Timezone" class="w-full border p-2 rounded">
+            </div>
+            <div class="flex justify-end space-x-2">
+                <button type="button" onclick="closeModal('editProducerModal')" 
+                        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                    Cancel
+                </button>
+                <button type="submit" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function editProducer(id) {
+    document.getElementById('producerId').value = id;
+    // Fetch producer data and populate form
+    fetch(`/api/producers/${id}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('editName').value = data.name;
+            document.getElementById('editType').value = data.type;
+            document.getElementById('editPhone').value = data.phoneNumber;
+            document.getElementById('editEmail').value = data.email;
+            document.getElementById('editTimezone').value = data.timezone;
+            document.getElementById('editProducerModal').classList.remove('hidden');
+        });
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.add('hidden');
+}
+
+document.getElementById('editProducerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const id = document.getElementById('producerId').value;
+    const formData = {
+        name: document.getElementById('editName').value,
+        type: document.getElementById('editType').value,
+        phoneNumber: document.getElementById('editPhone').value,
+        email: document.getElementById('editEmail').value,
+        timezone: document.getElementById('editTimezone').value
+    };
+
+    fetch(`/producers/update/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.reload();
+        }
+    });
+});
+</script>
+</body>
+</html>
