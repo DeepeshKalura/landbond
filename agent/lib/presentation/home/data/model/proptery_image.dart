@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'proptery_image.g.dart';
+
+@JsonSerializable()
 class PropertyImage {
   final String url;
   final bool isPrimary;
@@ -5,19 +10,12 @@ class PropertyImage {
 
   PropertyImage({
     required this.url,
-    this.isPrimary = false,
+    required this.isPrimary,
     this.caption,
   });
 
-  Map<String, dynamic> toJson() => {
-        'url': url,
-        'isPrimary': isPrimary,
-        'caption': caption,
-      };
+  factory PropertyImage.fromJson(Map<String, dynamic> json) =>
+      _$PropertyImageFromJson(json);
 
-  factory PropertyImage.fromJson(Map<String, dynamic> json) => PropertyImage(
-        url: json['url'],
-        isPrimary: json['isPrimary'],
-        caption: json['caption'],
-      );
+  Map<String, dynamic> toJson() => _$PropertyImageToJson(this);
 }

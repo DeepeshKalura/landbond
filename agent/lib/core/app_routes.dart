@@ -37,10 +37,15 @@ class AppRoutes {
         builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
-        path: "/properties",
-        name: AppUrl.propertyEntryFormScreen,
-        builder: (context, state) => const PropertyEntryFormScreen(),
-      ),
+          path: "/properties",
+          name: AppUrl.propertyEntryFormScreen,
+          builder: (context, state) {
+            final args = state.extra as Map<String, dynamic>;
+
+            return PropertyEntryFormScreen(
+              producerId: args['propertyId'],
+            );
+          }),
       GoRoute(
         path: "/forgot",
         name: AppUrl.forgotScreen,

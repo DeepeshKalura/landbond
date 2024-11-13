@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         routerConfig: AppRoutes.router,
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          primaryColor: Colors.blue,
         ),
       ),
     );

@@ -23,8 +23,6 @@ Property _$PropertyFromJson(Map<String, dynamic> json) => Property(
       producerId: json['producerId'] as String,
       cityId: json['cityId'] as String,
       localityId: json['localityId'] as String,
-      coordinates:
-          Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
       nearbyPlaces: (json['nearbyPlaces'] as List<dynamic>)
           .map((e) => NearbyPlace.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -68,7 +66,6 @@ Map<String, dynamic> _$PropertyToJson(Property instance) => <String, dynamic>{
       'producerId': instance.producerId,
       'cityId': instance.cityId,
       'localityId': instance.localityId,
-      'coordinates': instance.coordinates,
       'nearbyPlaces': instance.nearbyPlaces,
       'reviewId': instance.reviewId,
       'rating': instance.rating,
