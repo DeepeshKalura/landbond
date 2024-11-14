@@ -32,3 +32,10 @@ Framework • revision 2663184aa7 (8 weeks ago) • 2024-09-11 16:27:48 -0500
 Engine • revision 36335019a8
 Tools • Dart 3.5.3 • DevTools 2.37.3
 ```
+
+
+### File Structure
+
+1. admin :- This is the admin module where all the admin dashboard related code 
+
+2. agent: - This is the agent module where all the agent flutter code
