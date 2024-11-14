@@ -14,7 +14,6 @@ A FastAPI-based web application for managing real estate properties and producer
 
 - Python 3.8 or higher
 - Firebase project with Firestore database
-- NodeJS (for TailwindCSS compilation, optional)
 - Git (for version control)
 
 ## ⚙️ Installation
@@ -46,7 +45,7 @@ mkdir templates
 
 ```
 property-producer-management/
-├── src
+├── src/
 |    ├── app.py           
 ├── requirements.txt         
 ├── serviceAccountKey.json   
